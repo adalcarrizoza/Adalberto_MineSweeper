@@ -23,7 +23,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "OneLoneCoder.com - wxWidgets!", wxP
 		for (int y = 0; y < nFieldHeight; y++)
 		{
 			btn[y * nFieldWidth + x] = new wxButton(this, 10000 + (y * nFieldWidth + x));
-			btn[y * nFieldWidth + x]->SetFont(font);  //sets the instance for each button
+			btn[y * nFieldWidth + x]->SetFont(font);  //sets the instance for each button:
 
 			grid->Add(btn[y * nFieldWidth + x], 1, wxEXPAND | wxALL);
 
