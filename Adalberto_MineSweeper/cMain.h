@@ -5,17 +5,15 @@ class cMain : public wxFrame
 {
 public:
 	cMain();
-	~cMain();
+	~cMain(); 
 
 public: 
-	int nFieldWidth = 10;
-	int nFieldHeight = 10;
-	wxButton **btn;
-	int* nField = nullptr;
-	bool bFirstClick = true;
+	wxTextCtrl *m_txt1 = nullptr;
+	wxButton* m_btn1 = nullptr;
 
-	void OnButtonClicked(wxCommandEvent& evt); 
-
-	wxDECLARE_EVENT_TABLE();
 };
+
+
+
+
 

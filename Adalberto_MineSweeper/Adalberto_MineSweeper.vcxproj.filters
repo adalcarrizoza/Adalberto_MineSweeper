@@ -15,18 +15,18 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Mine.h">
+    <ClInclude Include="cMain.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="cMain.h">
+    <ClInclude Include="cApp.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Mine.cpp">
+    <ClCompile Include="cMain.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="cMain.cpp">
+    <ClCompile Include="cApp.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
