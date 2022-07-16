@@ -6,8 +6,10 @@ class cMain : public wxFrame
 public:
 	cMain();
 	~cMain(); 
+	void OnButtonClicked(wxCommandEvent& _evento);
 
 public: 
+	wxDECLARE_EVENT_TABLE(); //declara el evento
 	wxTextCtrl *m_txt1 = nullptr;
 	wxButton* m_btn0 = nullptr;
 	wxButton* m_btn1 = nullptr;
@@ -29,13 +31,9 @@ public:
 	wxButton* m_btnMult = nullptr;
 	wxButton* m_btnMin = nullptr;
 	wxButton* m_btnPlus = nullptr;
+	wxButton* m_btnAllNeg = nullptr;
 
-
-
-
-
-
-
+	wxButton** CambioBoton;
 };
 
 
