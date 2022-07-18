@@ -9,7 +9,7 @@ public:
 	void OnButtonClicked(wxCommandEvent& _evento);
 
 public: 
-	wxDECLARE_EVENT_TABLE(); //declara el evento
+	wxDECLARE_EVENT_TABLE(); //declarr the event
 	wxTextCtrl *m_txt1 = nullptr;
 	wxButton* m_btn0 = nullptr;
 	wxButton* m_btn1 = nullptr;
