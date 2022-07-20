@@ -1,5 +1,7 @@
 #include "cMain.h"
 #include "Factory.h"
+#include "Processor.h"
+
 
 wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 
@@ -42,7 +44,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Welcome to the calcultor created fr
 	CambioBoton[11] = m_btnEq;
 
 
-	//LEts
+	//LETTERS
 	m_btnMod = TheFactory.fabricateButton(this, 1013);    //new wxButton(this, 1013, "MOD", wxPoint(20, 190), wxSize(70, 70));
 	CambioBoton[12] = m_btnMod;
 	m_btnBin = TheFactory.fabricateButton(this, 1014);    //new wxButton(this, 1014, "BIN", wxPoint(100, 190), wxSize(70, 70));
@@ -71,54 +73,125 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Welcome to the calcultor created fr
 
 }
 
-cMain::~cMain()
+void cMain::Solved()
 {
-	delete[] CambioBoton;
+	if (solve == true)
+	{
+		num1 = 0;
+		m_txt1->Clear();
+	}
+	solve = false;
 }
 
 void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 
-	int getInput = _evento.GetId();
+	
+	Processor* theprocess = Processor::GetInstance();
+    int getInput = _evento.GetId();
+
 
 	switch (getInput) {
+
 	case 1000: {
-		*m_txt1 << "0";
+		Solved();
+		m_txt1->AppendText("0");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1001: {
-		*m_txt1 << "1";
+		Solved();
+		m_txt1->AppendText("1");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1002: {
-		*m_txt1 << "2";
+		Solved();
+		m_txt1->AppendText("2");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1003: {
-		*m_txt1 << "3";
+		Solved();
+		m_txt1->AppendText("3");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1004: {
-		*m_txt1 << "4";
+		Solved();
+		m_txt1->AppendText("4");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1005: {
-		*m_txt1 << "5";
+		Solved();
+		m_txt1->AppendText("5");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1006: {
-		*m_txt1 << "6";
+		Solved();
+		m_txt1->AppendText("6");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1007: {
-		*m_txt1 << "7";
+		Solved();
+		m_txt1->AppendText("7");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1008: {
-		*m_txt1 << "8";
+		Solved();
+		m_txt1->AppendText("8");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
 	case 1009: {
-		*m_txt1 << "9";
+		Solved();
+		m_txt1->AppendText("9");
+		if (eq == ' ')
+			num1 = (num1 * 10) + 0;
+		else
+			num2 = (num2 * 10) + 0;
 		break; }
+//________________    END OF THE BUTTONS (NUMBERS)    ____________________
 	case 1011: {
 		*m_txt1 << ".";
 		break; }
-	case 1012: {
-		*m_txt1 << "=";
+
+	case 1012: { //equal
+		m_txt1->AppendText("=");
+		m_txt1->Clear();
+		ans = theprocess->AllValueChange(num1, num2, eq);
+		m_txt1->AppendText(std::to_string(ans));
+		eq = ' ';
+		num1 = ans;
+		num2 = 0;
+		solve = true;
 		break; }
-	case 1013: {
-		*m_txt1 << "MOD";
+
+	case 1013: { //percent
+		solve = false;
+		m_txt1->AppendText(" % ");
+		eq = '%';
 		break; }
 	case 1014: {
 		*m_txt1 << "BIN";
@@ -126,24 +199,35 @@ void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 	case 1015: {
 		*m_txt1 << "HEX";
 	case 1016: {
-		*m_txt1 << "CE";
+
+		solve = false;
+		num1 = 0;
+		num2 = 0;
+		m_txt1->Clear();
 		break; }
 	case 1017: {
-		*m_txt1 << "/";
+		solve = false;
+		m_txt1->AppendText(" / ");
+		eq = '/';
 		break; }
 	case 1018: {
-		*m_txt1 << "*";
+		solve = false;
+		m_txt1->AppendText(" * ");
+		eq = '*';
 		break; }
 	case 1019: {
-		*m_txt1 << "-";
+		solve = false;
+		m_txt1->AppendText(" - ");
+		eq = '-';
 		break; }
 	case 1020: {
-		*m_txt1 << "+";
+		solve = false;
+		m_txt1->AppendText(" + ");
+		eq = '+';
 		break; }
 	case 1021: {
 		*m_txt1 << "Neg";
 		break; }
-
 	}
 	}
 }

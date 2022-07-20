@@ -6,7 +6,6 @@ wxButton* Factory::fabricateButton(wxWindow* parentframe, wxWindowID tri) {
 
 	switch (tri) {
 	case 1000: {
-
 		return new wxButton(parentframe, tri, "0", wxPoint(100, 510), wxSize(70, 70));
 		break; }
 	case 1001: {

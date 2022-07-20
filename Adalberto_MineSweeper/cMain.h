@@ -3,14 +3,23 @@
 
 class cMain : public wxFrame
 {
-public:
-	cMain();
-	~cMain(); 
-	void OnButtonClicked(wxCommandEvent& _evento);
+private:
+
+	float num1 = 0;
+	float num2 = 0;
+	float ans = 0;
+	std::string result2 = "";
+	char eq = ' ';
+	bool solve = false;
 
 public: 
 	wxDECLARE_EVENT_TABLE(); //declarr the event
+
+	cMain();
+	
+
 	wxTextCtrl *m_txt1 = nullptr;
+
 	wxButton* m_btn0 = nullptr;
 	wxButton* m_btn1 = nullptr;
 	wxButton* m_btn2 = nullptr;
@@ -34,6 +43,12 @@ public:
 	wxButton* m_btnAllNeg = nullptr;
 
 	wxButton** CambioBoton;
+
+	void OnButtonClicked(wxCommandEvent& _evento);
+	void Solved();
+
+		
+	
 };
 
 
