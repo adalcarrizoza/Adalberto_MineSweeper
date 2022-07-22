@@ -36,7 +36,7 @@ wxButton* Factory::fabricateButton(wxWindow* parentframe, wxWindowID tri) {
 		return new wxButton(parentframe, tri, "9", wxPoint(180, 430), wxSize(70, 70));
 		break; }
 	case 1011: {
-		return new wxButton(parentframe, tri, ".", wxPoint(20, 510), wxSize(70, 70));
+		return new wxButton(parentframe, tri, "DEC", wxPoint(20, 510), wxSize(70, 70));
 		break; }
 	case 1012: {
 		return new wxButton(parentframe, tri, "=", wxPoint(180, 510), wxSize(70, 70));
