@@ -6,7 +6,7 @@
 Processor* Processor::_processor = nullptr;
 
 
-float Processor::AllValueChange(float num1, float num2, char eq)
+float Processor::AllValueChange(int num1, int num2, char eq)
 {
     float ans = 0;
     switch (eq)
@@ -45,7 +45,7 @@ std::string Processor::TransformBinaryString(float number)
 	return results;
 }
 
-std::string Processor::TransformtoHexaDecimalString(int number)
+std::string Processor::TransformtoHexaDecimalString(float number)
 {
 	std::string results = "";
 	while (number > 0)
@@ -54,17 +54,17 @@ std::string Processor::TransformtoHexaDecimalString(int number)
 		if (remainder < 10)
 			results = std::to_string(remainder) + results;
 		else if (remainder == 10)
-			results = "A" + results;
+			results = "A" + remainder;
 		else if (remainder == 11)
-			results = "B" + results;
+			results = "B" + remainder;
 		else if (remainder == 12)
-			results = "C" + results;
+			results = "C" + remainder;
 		else if (remainder == 13)
-			results = "D" + results;
+			results = "D" + remainder;
 		else if (remainder == 14)
-			results = "E" + results;
+			results = "E" + remainder;
 		else if (remainder == 15)
-			results = "F" + results;
+			results = "F" + remainder;
 		number = number / 16;
 	}
 	return "0x" + results; //0x to let the people know that it is Hexadecimal.
