@@ -7,6 +7,14 @@ wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 
 wxEND_EVENT_TABLE()
 
+float num1 = 0;
+float num2 = 0;
+float ans = 0;
+std::string result2 = "";
+char eq = ' ';
+bool solve = false;
+
+
 cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Welcome to the calcultor created from scratch:)", wxPoint(60, 60), wxSize(435, 650))
 {
 	Factory TheFactory;
@@ -207,22 +215,22 @@ void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 		break; }
 	case 1017: {
 		solve = false;
-		m_txt1->AppendText(" / ");
+		*m_txt1 << (" / ");
 		eq = '/';
 		break; }
 	case 1018: {
 		solve = false;
-		m_txt1->AppendText(" * ");
+		*m_txt1 << (" * ");
 		eq = '*';
 		break; }
 	case 1019: {
 		solve = false;
-		m_txt1->AppendText(" - ");
+		*m_txt1 << (" - ");
 		eq = '-';
 		break; }
 	case 1020: {
 		solve = false;
-		m_txt1->AppendText(" + ");
+		*m_txt1 << (" + ");
 		eq = '+';
 		break; }
 	case 1021: {
@@ -232,7 +240,9 @@ void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 	}
 }
 
-
+cMain::~cMain() {
+	delete[]CambioBoton;
+}
 
 
 

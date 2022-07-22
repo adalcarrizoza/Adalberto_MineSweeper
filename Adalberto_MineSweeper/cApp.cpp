@@ -1,5 +1,5 @@
 #include "cApp.h"
-#include "cMain.h"
+
 wxIMPLEMENT_APP(cApp);
 
 cApp::cApp()

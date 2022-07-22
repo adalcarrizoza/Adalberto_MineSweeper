@@ -1,22 +1,18 @@
 #pragma once
-#include "wx/wx.h"
+#include "wx/wx.h" 
+
 
 class cMain : public wxFrame
 {
-private:
+public:
 
-	float num1 = 0;
-	float num2 = 0;
-	float ans = 0;
-	std::string result2 = "";
-	char eq = ' ';
-	bool solve = false;
-
-public: 
-	wxDECLARE_EVENT_TABLE(); //declarr the event
 
 	cMain();
-	
+	~cMain();
+	void OnButtonClicked(wxCommandEvent& _evento);
+	void Solved();
+public: 
+	wxDECLARE_EVENT_TABLE(); //declarr the event	
 
 	wxTextCtrl *m_txt1 = nullptr;
 
@@ -44,8 +40,7 @@ public:
 
 	wxButton** CambioBoton;
 
-	void OnButtonClicked(wxCommandEvent& _evento);
-	void Solved();
+	
 
 		
 	
