@@ -218,6 +218,8 @@ void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 			*m_txt1 << num1 << eq << num2 << "=" << ans ;
 			operation = true;
 			clearR = true;
+			_Bin = false;
+			_Hex = false;
 
 		}
 
@@ -235,28 +237,32 @@ void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 		}
 		break; }
 	case 1014: { //BINARY
-		if (_Bin = true) {
+		if (_Bin == true) {
 			m_txt1->Clear();
+			_Bin = false;
 		}
+		else {
 			m_txt1->Clear();
 			num1 = stoi(stringCall);
 			std::string Bin = Processor::GetInstance()->TransformBinaryString(num1);
 			*m_txt1 << Bin;
 			_Bin = true;
-	        operation = false;
-		
+			operation = false;
+		}
 		break; }
 	case 1015: { //HEXADECIMAL
-		if (_Hex = true) {
+		if (_Hex == true) {
 			m_txt1->Clear();
+			_Hex = false;
 		}
-		m_txt1->Clear();
-		num1 = stoi(stringCall);
-		std::string Hex = Processor::GetInstance()->TransformtoHexaDecimalString(num1);
-		*m_txt1 << Hex;
-		_Hex = true;
-		operation = false;
-
+		else {
+			m_txt1->Clear();
+			num1 = stoi(stringCall);
+			std::string Hex = Processor::GetInstance()->TransformtoHexaDecimalString(num1);
+			*m_txt1 << Hex;
+			_Hex = true;
+			operation = false;
+		}
 		break; }
 	case 1016: { //------CLEAR------
 		num1 = 0;
@@ -316,8 +322,11 @@ void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 		eq = '+';
 		break; }
 	case 1021: {
-		*m_txt1 << "Neg";
-		stringCall += "Neg";
+		int negnumber = stoi(stringCall);
+		negnumber = -(negnumber);
+		stringCall = std::to_string(negnumber);
+		m_txt1->Clear();
+		*m_txt1 << stringCall;
 		break; }
 	}
 	
