@@ -18,7 +18,7 @@ public:
 	void operator=(Processor& other) = delete;
 
 
-	float AllValueChange (float num1, float num2, char eq);
+	float AllValueChange (int num1, int num2, char eq);
 	std::string TransformBinaryString(float number);
 	std::string TransformtoHexaDecimalString(float number);
 };

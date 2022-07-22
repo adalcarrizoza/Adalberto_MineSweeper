@@ -7,6 +7,22 @@ wxBEGIN_EVENT_TABLE(cMain, wxFrame)
 
 wxEND_EVENT_TABLE()
 
+
+
+float num1 = 0;
+float num2 = 0;
+float number;
+float ans = 0;
+std::string stringCall = "";
+char eq;
+bool operation = true;
+bool clearR = false;
+bool _Bin = false;
+bool _Dec = true;
+bool _Hex = false;
+Processor* pross = Processor::GetInstance();
+
+
 cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Welcome to the calcultor created from scratch:)", wxPoint(60, 60), wxSize(435, 650))
 {
 	Factory TheFactory;
@@ -16,7 +32,7 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Welcome to the calcultor created fr
 	m_txt1 = new wxTextCtrl(this, wxID_ANY, "", wxPoint(20, 10), wxSize(390, 150));
 
 	//numbers
-	m_btn1 = TheFactory.fabricateButton(this,  1001);   //new wxButton(this, 1001, "1", wxPoint(20, 270), wxSize(70, 70));
+	m_btn1 = TheFactory.fabricateButton(this, 1001);   //new wxButton(this, 1001, "1", wxPoint(20, 270), wxSize(70, 70));
 	CambioBoton[0] = m_btn1;
 	m_btn2 = TheFactory.fabricateButton(this, 1002);    //new wxButton(this, 1002, "2", wxPoint(100, 270), wxSize(70, 70));
 	CambioBoton[1] = m_btn2;
@@ -73,166 +89,250 @@ cMain::cMain() : wxFrame(nullptr, wxID_ANY, "Welcome to the calcultor created fr
 
 }
 
-void cMain::Solved()
-{
-	if (solve == true)
-	{
-		num1 = 0;
-		m_txt1->Clear();
-	}
-	solve = false;
-}
 
 void cMain::OnButtonClicked(wxCommandEvent& _evento) {
 
-	
+
 	Processor* theprocess = Processor::GetInstance();
-    int getInput = _evento.GetId();
+	int getInput = _evento.GetId();
 
 
 	switch (getInput) {
 
 	case 1000: {
-		Solved();
-		m_txt1->AppendText("0");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("0");
+		stringCall += "0";
+
 		break; }
 	case 1001: {
-		Solved();
-		m_txt1->AppendText("1");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("1");
+		stringCall += "1";
+
+
 		break; }
 	case 1002: {
-		Solved();
-		m_txt1->AppendText("2");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("2");
+		stringCall += "2";
+
 		break; }
 	case 1003: {
-		Solved();
-		m_txt1->AppendText("3");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+
+		*m_txt1 << ("3");
+		stringCall += "3";
+
+
 		break; }
 	case 1004: {
-		Solved();
-		m_txt1->AppendText("4");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("4");
+		stringCall += "4";
+
 		break; }
 	case 1005: {
-		Solved();
-		m_txt1->AppendText("5");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("5");
+		stringCall += "5";
+
+
 		break; }
 	case 1006: {
-		Solved();
-		m_txt1->AppendText("6");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("6");
+		stringCall += "6";
+
+
 		break; }
 	case 1007: {
-		Solved();
-		m_txt1->AppendText("7");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("7");
+		stringCall += "7";
+
 		break; }
 	case 1008: {
-		Solved();
-		m_txt1->AppendText("8");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("8");
+		stringCall += "8";
+
 		break; }
 	case 1009: {
-		Solved();
-		m_txt1->AppendText("9");
-		if (eq == ' ')
-			num1 = (num1 * 10) + 0;
-		else
-			num2 = (num2 * 10) + 0;
+		if (clearR) {
+			m_txt1->Clear();
+			stringCall = "";
+			clearR = false;
+		}
+		*m_txt1 << ("9");
+		stringCall += "9";
+
 		break; }
-//________________    END OF THE BUTTONS (NUMBERS)    ____________________
-	case 1011: {
-		*m_txt1 << ".";
+			 //________________    END OF THE BUTTONS (NUMBERS)    ____________________
+	case 1011: { //DECIMAL
+		if (_Bin || _Hex) {
+			m_txt1->Clear();
+			*m_txt1 << stringCall;
+			_Bin = false;
+			_Hex = false;
+			operation = true;
+		}
 		break; }
 
 	case 1012: { //equal
-		m_txt1->AppendText("=");
-		m_txt1->Clear();
-		ans = theprocess->AllValueChange(num1, num2, eq);
-		m_txt1->AppendText(std::to_string(ans));
-		eq = ' ';
-		num1 = ans;
-		num2 = 0;
-		solve = true;
+		if (!operation && stringCall.length() != 0) {
+			m_txt1->Clear();
+			num2 = stoi(stringCall);
+			ans = pross->AllValueChange(num1, num2, eq);
+			*m_txt1 << num1 << eq << num2 << "=" << ans;
+			operation = true;
+			clearR = true;
+			_Bin = false;
+			_Hex = false;
+
+		}
+
 		break; }
 
 	case 1013: { //percent
-		solve = false;
-		m_txt1->AppendText(" % ");
-		eq = '%';
-		break; }
-	case 1014: {
-		*m_txt1 << "BIN";
-		break; }
-	case 1015: {
-		*m_txt1 << "HEX";
-	case 1016: {
+		if (operation && stringCall.length() != 0) {
+			num1 = stoi(stringCall);
+			eq = '%';
+			m_txt1->Clear();
+			*m_txt1 << num1 << ("%");
+			stringCall = "";
 
-		solve = false;
+			operation = false;
+		}
+		break; }
+	case 1014: { //BINARY
+		if (_Bin == true) {
+			m_txt1->Clear();
+			_Bin = false;
+		}
+		else {
+			m_txt1->Clear();
+			num1 = stoi(stringCall);
+			std::string Bin = Processor::GetInstance()->TransformBinaryString(num1);
+			*m_txt1 << Bin;
+			_Bin = true;
+			operation = false;
+		}
+		break; }
+	case 1015: { //HEXADECIMAL
+		if (_Hex == true) {
+			m_txt1->Clear();
+			_Hex = false;
+		}
+		else {
+			m_txt1->Clear();
+			num1 = stoi(stringCall);
+			std::string Hex = Processor::GetInstance()->TransformtoHexaDecimalString(num1);
+			*m_txt1 << Hex;
+			_Hex = true;
+			operation = false;
+		}
+		break; }
+	case 1016: { //------CLEAR------
 		num1 = 0;
 		num2 = 0;
+		clearR = false;
 		m_txt1->Clear();
+		eq = NULL;
+		operation = true;
+		stringCall = "";
 		break; }
 	case 1017: {
-		solve = false;
-		m_txt1->AppendText(" / ");
+		if (operation && stringCall.length() != 0) {
+			num1 = stoi(stringCall);
+			eq = '/';
+			m_txt1->Clear();
+			*m_txt1 << num1 << ("/");
+			stringCall = "";
+
+			operation = false;
+		}
 		eq = '/';
 		break; }
 	case 1018: {
-		solve = false;
-		m_txt1->AppendText(" * ");
+		if (operation && stringCall.length() != 0) {
+			num1 = stoi(stringCall);
+			eq = '*';
+			m_txt1->Clear();
+			*m_txt1 << num1 << ("*");
+			stringCall = "";
+
+			operation = false;
+		}
 		eq = '*';
 		break; }
 	case 1019: {
-		solve = false;
-		m_txt1->AppendText(" - ");
+		if (operation && stringCall.length() != 0) {
+			num1 = stoi(stringCall);
+			eq = '-';
+			m_txt1->Clear();
+			*m_txt1 << num1 << ("-");
+			stringCall = "";
+
+			operation = false;
+		}
 		eq = '-';
 		break; }
 	case 1020: {
-		solve = false;
-		m_txt1->AppendText(" + ");
+		if (operation && stringCall.length() != 0) {
+			num1 = stoi(stringCall);
+			eq = '+';
+			m_txt1->Clear();
+			*m_txt1 << num1 << ("+");
+			stringCall = "";
+
+			operation = false;
+		}
 		eq = '+';
 		break; }
 	case 1021: {
-		*m_txt1 << "Neg";
+		int negnumber = stoi(stringCall);
+		negnumber = -(negnumber);
+		stringCall = std::to_string(negnumber);
+		m_txt1->Clear();
+		*m_txt1 << stringCall;
 		break; }
 	}
-	}
+
 }
 
-
-
-
+cMain::~cMain() {
+	delete[]CambioBoton;
+}
 

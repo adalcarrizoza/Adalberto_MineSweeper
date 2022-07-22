@@ -6,7 +6,7 @@
 Processor* Processor::_processor = nullptr;
 
 
-float Processor::AllValueChange(float num1, float num2, char eq)
+float Processor::AllValueChange(int num1, int num2, char eq)
 {
     float ans = 0;
     switch (eq)
