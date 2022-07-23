@@ -20,6 +20,6 @@ public:
 
 	float AllValueChange (int num1, int num2, char eq);
 	std::string TransformBinaryString(float number);
-	std::string TransformtoHexaDecimalString(float number);
+	std::string TransformtoHexaDecimalString(int number);
 };
 
